@@ -1,0 +1,80 @@
+---
+- hosts: all
+  vars:
+    mypasswd: Str0nkPa$$wd
+
+  tasks:
+    - name: install latest version of mysql
+      apt: name=mysql-server state=latest
+      become: yes
+
+    - name: install essentials for  MySQL
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - python-dev
+          - libmysqlclient-dev
+          - python3-pip
+          - python3-mysql.connector
+          - mydumper
+          - mysqltuner
+          - python3-pymysql
+          - python3-mysqldb
+        state: latest
+      become: yes
+
+    - name: start mysql
+      service:
+        name: mysql
+        state: started
+        enabled: true
+      become: yes
+
+    - name: copy content to /etc/mysql/my.cnf
+      template:
+        src: ./my.cnf
+        dest: /etc/mysql/my.cnf
+        owner: root
+        group: root
+        mode: 0644
+        backup: true
+      become: yes
+
+    - name: restart mysql
+      service:
+        name: mysql
+        state: restarted
+        enabled: true
+      become: yes
+
+
+    - name: create replication user
+      mysql_user:
+        login_user: root
+        login_password: ""
+        login_port: 3307
+        login_unix_socket: '/var/run/mysqld/mysqld.sock'
+        name: replicauser
+        password: "{{ mypasswd }}"
+        priv: '*.*:REPLICATION SLAVE'
+        state: present
+      become: yes
+
+
+    - name: Flush privileges
+      command: /usr/bin/mysql -uroot -e "flush privileges;"
+      become: yes
+
+    - name: Set access host %
+      command: /usr/bin/mysql -uroot -e "UPDATE mysql.user SET Host='%' WHERE Host='localhost' AND User='replicauser';"
+      become: yes
+
+    - name: Password for root login
+      command: /usr/bin/mysql -uroot -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'abc123!';"
+      become: yes
+
+    - name: Flush privileges
+      command: /usr/bin/mysql -uroot -pabc123! -e "flush privileges;"
+      become: yes
+
