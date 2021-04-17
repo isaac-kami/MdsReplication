@@ -1,27 +1,10 @@
 
-variable "bucket_namespace" {
-  default = ""
-}
-
-## for public ssh keys
-
-variable "public_ssh" {
-  default = ""
-}
-## for private ssh keys
-
-variable "private_key_path" {
-  default = ""
-}
-
-### root OCID
-
-variable "compartment_ocid" {
-  default = ""
-}
-
-
 # for mysql  mds
+
+variable "private_IP"{
+  default="10.0.1.5"
+}
+
 variable "mysql_db_system_admin_password" {
   default="ABCabc123$%"
 }
@@ -119,3 +102,5 @@ variable "fqdn" {
 variable  "name_bucket"{
   default = "mdsbucket"
 } 
+
+
