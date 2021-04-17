@@ -13,6 +13,8 @@ Architecture that will be deployed with Terraform code:
 <br></br>
 <b>Steps:</b>
 <br></br>
+
+## Step 1 
 1. Generate ssh keys under your home directory. (these keys will be set as variables in variables.tf file )
 
 Example:
@@ -61,6 +63,24 @@ zack@cloudshell:~ (eu-frankfurt-1)$ cd MdsReplication
 zack@cloudshell:MdsReplication (eu-frankfurt-1)$ ls var*
 variables.tf
 ```
+
+The following subpoints a), b) and c) are completely automated with the help of script generate_variables.sh
+
+```
+zack@cloudshell:MdsReplication (eu-frankfurt-1)$ chmod +x generate_variables.sh
+zack@cloudshell:MdsReplication (eu-frankfurt-1)$ ./generate_variables.sh
+```
+Time of generating and adding to variables.tf file (give or take 1 or 2 seconds):
+```
+zack@cloudshell:MdsReplication (eu-frankfurt-1)$ time ./generate_variables.sh
+ 
+ real    0m15.067s
+ user    0m12.179s
+ sys     0m1.519s
+```
+
+After running the "generate_variables.sh" go to next step, Step 4.
+
 a) Set up the generated ssh keys (private and public):
 
 ```
@@ -111,6 +131,8 @@ zack@cloudshell:~ (eu-frankfurt-1)$ oci os ns get
 }
 ```
 <br></br>
+## Step 2
+
 4. Perform the Terraform commands: 
 
 ```
@@ -149,6 +171,7 @@ terraform apply
 ![alt text](https://raw.githubusercontent.com/MuchTest/pix/main/b4/9object_storage.png)
 
 <br></br>
+## Step 3
 
 6. As soon as the the environment is ready, setup OCI CLI Configuration on mysqlshellinstance.
  
@@ -156,6 +179,11 @@ More details at <a href="https://github.com/isaac-kami/MdsReplication/blob/main/
 
 <i> Proceed with next steps as soon as Step 6 is properly implemented </i>
 <br></br>
+
+<br></br>
+
+
+## Step 4
 
 7. Channel creation:
 
@@ -368,6 +396,7 @@ MySQL  10.0.1.48:33060+ ssl  SQL > show global variables like 'GTID%';
 
 <br></br>
 
+## Step 5
 8. Deploying the Channel:
 
 Go back to Cloud Shell:
