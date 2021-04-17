@@ -9,6 +9,8 @@ resource "oci_mysql_mysql_db_system" "mysql_create" {
     compartment_id = oci_identity_compartment.MySqlOciCompartment.id
 
     shape_name = var.mysql_shape_name
+    
+    ip_address = var.private_IP
 
     subnet_id = oci_core_subnet.MySqlOciSubnet.id
 
