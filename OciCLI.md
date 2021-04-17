@@ -64,7 +64,7 @@ total 12
 -rw-r--r-- 1 root root   48 Apr 17 10:02 oci_api_key_fingerprint
  ```
  
- <b> From here, go to Step 6.7 <b>
+ <b> From here, go to Step 6.7 </b>
 
 6.2. Create folder /root/.oci, where the OCI configuration will be added:
 
