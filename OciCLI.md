@@ -27,7 +27,7 @@ ocid1.user.oc1..aaaaaaaahereisyouruserOCID
 <i> These details details (tenancy OCID and User OCID) will be required when performing the OCI CLI configuration. </i>
 
 
-1. Log in to mysqlshellinstance:
+6.1. Log in to mysqlshellinstance:
 
 ```
 zack@cloudshell:MdsReplication (eu-frankfurt-1)$ terraform output
@@ -45,7 +45,28 @@ root@mysqlshellinstance:~#
 root@mysqlshellinstance:~# bash -c "$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)"
 
 ```
-2. Create folder /root/.oci, where the OCI configuration will be added:
+
+<b> Steps 6.2, 6.3, 6.4, 6.5 are automated with the help of script generate_pemkeys.sh. This script must be run from mysqlshellinstance. </b>
+    
+ ```
+root@mysqlshellinstance:~# cd /home
+root@mysqlshellinstance:/home# wget https://raw.githubusercontent.com/isaac-kami/MdsReplication/main/generate_pemkeys.sh
+```
+```
+root@mysqlshellinstance:/home# chmod +x generate_pemkeys.sh 
+root@mysqlshellinstance:/home# ./generate_pemkeys.sh 
+```
+```
+root@mysqlshellinstance:/home# ls -ltr /root/.oci/
+total 12
+-rw------- 1 root root 1675 Apr 17 10:02 oci_api_private_key.pem
+-rw-r--r-- 1 root root  451 Apr 17 10:02 oci_api_key_public.pem
+-rw-r--r-- 1 root root   48 Apr 17 10:02 oci_api_key_fingerprint
+ ```
+ 
+ <b> From here, go to Step 6.7 <b>
+
+6.2. Create folder /root/.oci, where the OCI configuration will be added:
 
 ```
 root@mysqlshellinstance:~# mkdir -p /root/.oci/
@@ -53,16 +74,16 @@ root@mysqlshellinstance:~# cd ~/.oci
 root@mysqlshellinstance:~/.oci#
 ```
 
-3. Generate API private key:
+6.3. Generate API private key:
 ```
 root@mysqlshellinstance:~/.oci# openssl genrsa -out ~/.oci/oci_api_private_key.pem 2048
 ```
-4. Generate API public key
+6.4. Generate API public key
 ```
 root@mysqlshellinstance:~/.oci#  openssl rsa -pubout -in /root/.oci/oci_api_private_key.pem -out /root/.oci/oci_api_key_public.pem 
 
 ```
-5. Generate Fingerprint
+6.5. Generate Fingerprint
 
 ```
 root@mysqlshellinstance:~/.oci# openssl rsa -in ~/.oci/oci_api_private_key.pem -pubout -outform DER | \
@@ -70,7 +91,7 @@ openssl md5 -c  | \
 sed s/\(stdin\)=\\s//g > oci_api_key_fingerprint 
 
 ```
-6. Check if files were successfully created:
+6.6. Check if files were successfully created:
 
 ```
 root@mysqlshellinstance:~/.oci# ls -ltr
@@ -80,7 +101,7 @@ total 12
 -rw-r--r-- 1 root root   48 Apr  8 15:22 oci_api_key_fingerprint
 root@mysqlshellinstance:~/.oci# 
 ```
-7.  Add API RSA public key to OCI User
+6.7.  Add API RSA public key to OCI User
 
 ```
 root@mysqlshellinstance:~/.oci#  more oci_api_key_public.pem
@@ -105,7 +126,7 @@ b) Select your User, and go down the page. Select API Keys > Add API Keys, and t
 ![alt text](https://raw.githubusercontent.com/MuchTest/pix/main/b4/11.png)
 
 
-8. Setup configuration file for OCI:
+6.8. Setup configuration file for OCI:
 
 ```
 root@mysqlshellinstance:~/.oci# /root/bin/oci setup config
@@ -151,12 +172,12 @@ Config written to /root/.oci/config
 
 ```
 
-9. Check if config file was created under /root/.oci/ folder:
+6.9. Check if config file was created under /root/.oci/ folder:
 ```
 root@mysqlshellinstance:~/.oci# ls -ltr /root/.oci/config
 -rw------- 1 root root 306 Apr  8 15:26 /root/.oci/config
 ```
-10. Call OCI CLI tool without full path:
+6.10. Call OCI CLI tool without full path:
 ```
 root@mysqlshellinstance:~/.oci# echo 'export PATH="$PATH:/root/.oci/"' >> ~/.bashrc 
 root@mysqlshellinstance:~/.oci# source ~/.bashrc
@@ -164,7 +185,7 @@ root@mysqlshellinstance:~/.oci#  oci -v
 2.22.2
 ```
 
-11. Perform a small test:
+6.11. Perform a small test:
 ```
 root@mysqlshellinstance:~/.oci# oci os ns get
 {
