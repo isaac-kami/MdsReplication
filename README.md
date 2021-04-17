@@ -14,7 +14,7 @@ Architecture that will be deployed with Terraform code:
 <b>Steps:</b>
 <br></br>
 
-## Step 1 
+## Part 1 
 1. Generate ssh keys under your home directory. (these keys will be set as variables in variables.tf file )
 
 Example:
@@ -131,7 +131,7 @@ zack@cloudshell:~ (eu-frankfurt-1)$ oci os ns get
 }
 ```
 <br></br>
-## Step 2
+## Part 2
 
 4. Perform the Terraform commands: 
 
@@ -171,7 +171,7 @@ terraform apply
 ![alt text](https://raw.githubusercontent.com/MuchTest/pix/main/b4/9object_storage.png)
 
 <br></br>
-## Step 3
+## Part 3
 
 6. As soon as the the environment is ready, setup OCI CLI Configuration on mysqlshellinstance.
  
@@ -183,7 +183,7 @@ More details at <a href="https://github.com/isaac-kami/MdsReplication/blob/main/
 <br></br>
 
 
-## Step 4
+## Part 4
 
 7. Channel creation:
 
@@ -396,7 +396,7 @@ MySQL  10.0.1.48:33060+ ssl  SQL > show global variables like 'GTID%';
 
 <br></br>
 
-## Step 5
+## Part 5
 8. Deploying the Channel:
 
 Go back to Cloud Shell:
