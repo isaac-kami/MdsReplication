@@ -64,7 +64,7 @@ zack@cloudshell:MdsReplication (eu-frankfurt-1)$ ls var*
 variables.tf
 ```
 
-The following subpoints a), b) and c) are completely automated with the help of script generate_variables.sh
+<b> The following subpoints a), b) and c) are completely automated with the help of script generate_variables.sh </b>
 
 ```
 zack@cloudshell:MdsReplication (eu-frankfurt-1)$ chmod +x generate_variables.sh
@@ -79,7 +79,7 @@ zack@cloudshell:MdsReplication (eu-frankfurt-1)$ time ./generate_variables.sh
  sys     0m1.519s
 ```
 
-After running the "generate_variables.sh" go to next step, Step 4.
+<b> After running the "generate_variables.sh" go to next step, Part2 - Step 4 </b>
 
 a) Set up the generated ssh keys (private and public):
 
@@ -130,6 +130,7 @@ zack@cloudshell:~ (eu-frankfurt-1)$ oci os ns get
   "data": "s0meinf0h3re"
 }
 ```
+
 <br></br>
 ## Part 2
 
