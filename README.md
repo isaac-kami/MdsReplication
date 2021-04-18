@@ -9,7 +9,9 @@
 
 
 
-<i> Structured presentation can be found at following Gitbook link: https://isaac-exe.gitbook.io/mds-presentation/ </i> 
+<b> Structured presentation can be found at following Gitbook link:</b> https://isaac-exe.gitbook.io/mds-presentation/
+
+<br>
 
 
 <i>This repository is for implementing and testing the possible steps for inbound replication in OCI with MySQL Service installed on an instance (the Source) and the MySQL Database System (the Target)</i>
