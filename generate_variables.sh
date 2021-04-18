@@ -33,7 +33,7 @@ variable \"compartment_ocid\" {
 function public_key_path(){
 
 echo "
-variable \"public_ssh\" {
+variable \"ssh_public_key_path\" {
    default = \"/home/$var_username/.ssh/id_rsa.pub\"
 }
 " >> variables.tf
@@ -43,7 +43,7 @@ variable \"public_ssh\" {
 function private_key_path() {
 
 echo "
-variable \"private_key_path\" {
+variable \"ssh_private_key_path\" {
    default = \"/home/$var_username/.ssh/id_rsa\"
 }
 " >> variables.tf
