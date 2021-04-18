@@ -14,7 +14,7 @@ resource "oci_core_instance" "MySqlOciInstance" {
     display_name = var.instance_name
 
     metadata = {
-        ssh_authorized_keys = file(var.public_ssh)
+        ssh_authorized_keys = file(var.ssh_public_key_path)
     }
    
     create_vnic_details {
