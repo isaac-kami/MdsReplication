@@ -84,13 +84,13 @@ zack@cloudshell:MdsReplication (eu-frankfurt-1)$ time ./generate_variables.sh
 a) Set up the generated ssh keys (private and public):
 
 ```
-variable "public_ssh" {
+variable "ssh_public_key_path" {
   default = ""
 }
 ```
 
 ```
-variable "private_key_path" {
+variable "ssh_private_key_path" {
   default = ""
 }
 ```
