@@ -30,7 +30,7 @@ resource "null_resource" "MySqlOciRemote" {
 }
    provisioner "local-exec" {
 
-     command = "ansible-playbook -i '${data.oci_core_vnic.MySqlOciVNICprimary.public_ip_address},' --private-key ${var.private_key_path} ./mysql.yml  -u ubuntu"
+     command = "ansible-playbook -i '${data.oci_core_vnic.MySqlOciVNICprimary.public_ip_address},' --private-key ${var.ssh_private_key_path} ./mysql.yml  -u ubuntu"
 
    }
 
