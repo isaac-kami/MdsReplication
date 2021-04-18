@@ -24,7 +24,7 @@ resource "null_resource" "MySqlOciRemote" {
       type = "ssh"
       user = "ubuntu"
       host = data.oci_core_vnic.MySqlOciVNICprimary.public_ip_address
-      private_key = file(var.private_key_path)
+      private_key = file(var.ssh_private_key_path)
    } 
 
 }
