@@ -1,6 +1,15 @@
 # MySQL - MDS replication
 
-<b> <i> Code adapted to be run from OCI Cloud-Shell </i> </b>
+<b> <i> Code adapted to be run from OCI Cloud-Shell </i> </b> 
+
+
+<b> n.b </b>
+
+
+
+
+<i> Structured presentation can be found at following Gitbook link: https://isaac-exe.gitbook.io/mds-presentation/ </i> 
+
 
 <i>This repository is for implementing and testing the possible steps for inbound replication in OCI with MySQL Service installed on an instance (the Source) and the MySQL Database System (the Target)</i>
 
