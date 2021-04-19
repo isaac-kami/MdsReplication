@@ -17,10 +17,6 @@ variable "mysql_shape_name" {
   default = "VM.Standard.E2.1"
 }
 
-variable "mysql_db_system_availability_domain" {
-  default = "Aodz:EU-FRANKFURT-1-AD-1"
-}
-
 variable "mysql_storage" {
   default = 50
 }
@@ -65,9 +61,6 @@ variable "instance_shape" {
   default = "VM.Standard.E2.1"
 }
 
-variable "instance_image" {
-  default =   "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaa2fbceq23oofnxf4v23urfnfzui6n6det6ianoyvtmsbo5nzv2efq"
-}
 
 
 
