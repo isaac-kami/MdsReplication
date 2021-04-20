@@ -19,7 +19,7 @@ awk 'NR==1{print $2}' | \
 sed -e 's/,//g' -e 's/"//g')
 
 var_ad_mds=$(oci iam availability-domain list | \
-jq .data[1].name | \
+jq .data[0].name | \
 sed 's/"//g')
 
 var_image_os=$(oci compute image list --all --output table --compartment-id $TENANCY | \
