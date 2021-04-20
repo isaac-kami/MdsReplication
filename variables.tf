@@ -14,7 +14,7 @@ variable "mysql_db_system_admin_username" {
 }
 
 variable "mysql_shape_name" {
-  default = "VM.Standard.E2.1"
+  default = "MySQL.VM.Standard.E3.1.8GB"
 }
 
 variable "mysql_storage" {
