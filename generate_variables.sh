@@ -6,6 +6,7 @@
  awk 'NR==1{print $2}' | \
  sed -e 's/,//g' -e 's/"//g')
 
+ sleep 3
 
  var_username=$(whoami)
 
