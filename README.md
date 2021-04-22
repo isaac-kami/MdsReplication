@@ -9,7 +9,7 @@
 
 
 
-<b> Structured presentation can be found at following Gitbook link:</b> https://isaac-exe.gitbook.io/mds-presentation/
+<b> Structured presentation can be found at following Gitbook link:</b> https://isaac-exe.gitbook.io/mds-presentation/structure
 
 <br>
 
