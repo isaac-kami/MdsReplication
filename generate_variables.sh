@@ -23,7 +23,8 @@ var_ad_mds=$(oci iam availability-domain list | \
 jq .data[0].name | \
 sed 's/"//g')
 
-var_image_os=$(oci compute image list --all --output table --compartment-id $TENANCY | grep "Canonical-Ubuntu-20.04-2021.01.25-0"  | awk {'print $16'})
+#var_image_os=$(oci compute image list --all --output table --compartment-id $TENANCY | grep "Canonical-Ubuntu-20.04-2021.01.25-0"  | awk {'print $16'})
+var_image_os=$(oci compute image list --all --output table --compartment-id $TENANCY | grep "Canonical-Ubuntu-20.04-2021.03.25-0" | awk {'print $16'})
 
 
 function message() {
